@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cat Mail</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial;
+
+    /* 🌌 COOL SPACE BACKGROUND */
+    background: radial-gradient(circle at top, #1b2735, #090a0f);
+    overflow: hidden;
+}
+
+/* floating glow blobs */
+body::before, body::after {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: #ff4fd8;
+    filter: blur(120px);
+    opacity: 0.3;
+    border-radius: 50%;
+    animation: float 6s infinite alternate;
+}
+
+body::after {
+    background: #4fd1ff;
+    top: 60%;
+    left: 60%;
+}
+
+body::before {
+    top: 10%;
+    left: 20%;
+}
+
+@keyframes float {
+    from { transform: translateY(0px); }
+    to { transform: translateY(40px); }
+}
+
+/* glass mail box */
+.box {
+    width: 360px;
+    padding: 25px;
+    border-radius: 18px;
+
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(255,255,255,0.15);
+    color: white;
+    text-align: center;
+
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    z-index: 1;
+}
+
+.cat {
+    font-size: 45px;
+    margin-bottom: 10px;
+    animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+button {
+    margin-top: 15px;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 12px;
+
+    background: linear-gradient(90deg, #ff4fd8, #4fd1ff);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+.message {
+    display: none;
+    margin-top: 20px;
+    font-size: 24px;
+    color: #ffd27f;
+    text-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+    <div class="cat">🐱📩</div>
+    <h2>Rexy the cat </h2>
+    <p>From: rexy@meow.world</p>
+    <p>Subject: Secret Transmission</p>
+
+    <button onclick="openMail()">Open Mail</button>
+
+    <div class="message" id="msg">
+        Meow for me 😼
+    </div>
+</div>
+
+<script>
+function openMail() {
+    document.getElementById("msg").style.display = "block";
+}
+</script>
+
+</body>
+</html>
